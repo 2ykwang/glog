@@ -9,9 +9,13 @@ services:
     build:
       context: .
     volumes:
-      - static_volume:/code/.static
+      - static_volume:/code/static_root
       - media_volume:/code/.media
-    command: gunicorn -c gunicorn.conf.py
+    command: >
+      bash -c "
+        python3 manage.py collectstatic &&
+        gunicorn -c gunicorn.conf.py
+      "
     networks:
       - app
     expose:
