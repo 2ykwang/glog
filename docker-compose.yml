@@ -10,7 +10,11 @@ services:
       context: .
     volumes:
       - static_volume:/code/static_root
-    command: gunicorn config.wsgi
+    command: >
+      bash -c "
+        python3 manage.py collectstatic &&
+        gunicorn config.wsgi
+      "
     networks:
       - app
     expose:
