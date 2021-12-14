@@ -5,11 +5,12 @@ networks:
     driver: bridge
  
 services:
-  backend:
+  app:
     build:
       context: .
     volumes:
       - static_volume:/code/static_root
+      - media_volume:/code/.media
     command: >
       bash -c "
         python3 manage.py collectstatic --noinput &&
@@ -25,7 +26,8 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     volumes:
-      - static_volume:/code/static_root
+      - static_volume:/code/.static
+      - media_volume:/code/.media
     expose:
       - "80"
       - "443"
@@ -35,7 +37,8 @@ services:
     networks:
       - app
     depends_on:
-      - backend
+      - app
 
 volumes:
   static_volume:
+  media_volume:

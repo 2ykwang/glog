@@ -16,16 +16,18 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 APPS_DIR = os.path.join(BASE_DIR, "blog")
 TEMPLATES_DIR = os.path.join(APPS_DIR, "templates")
+
+# media
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(APPS_DIR, "media")
+MEDIA_ROOT = os.path.join(BASE_DIR, ".media")
 
-
+# static
 STATIC_URL = "/static/"
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, ".static")
 
 env = os.environ
 

@@ -84,7 +84,7 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-.static_root
+.static
 
 # IPython
 profile_default/

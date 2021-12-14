@@ -7,7 +7,7 @@ WORKDIR /code
 
 COPY . .
 
-ENV ALLOWED_HOSTS 127.0.0.1
+# ENV ALLOWED_HOSTS 127.0.0.1
 ENV PORT 8000
 
 RUN pip install --no-cache-dir -r requirements.txt
