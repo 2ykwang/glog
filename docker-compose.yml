@@ -12,7 +12,7 @@ services:
       - static_volume:/code/static_root
     command: >
       bash -c "
-        python3 manage.py collectstatic &&
+        python3 manage.py collectstatic --noinput &&
         gunicorn config.wsgi
       "
     networks:
